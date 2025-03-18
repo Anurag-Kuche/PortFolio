@@ -1,3 +1,4 @@
+import NavbarMain from "./components/navbar/NavbarMain"
 
 
 function App() {
@@ -5,7 +6,7 @@ function App() {
 
   return (
     <main>
-      
+      <NavbarMain/>
     </main>
   )
 }
