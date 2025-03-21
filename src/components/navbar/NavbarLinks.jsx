@@ -1,4 +1,4 @@
-import { Link } from "react-scroll";/
+import { Link } from "react-scroll";
 
 const links = [
   { link: "About Me", section: "about" },
