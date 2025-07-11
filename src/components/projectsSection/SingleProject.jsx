@@ -13,6 +13,7 @@ const SingleProject = ({ name, year, align, image, link }) => {
         align === "left" ? "md:flex-row" : "md:flex-row-reverse"
       } justify-end sm:flex-col`}
     >
+      {/* Text Part */}
       <div>
         <h2 className="md:text-3xl sm:text-2xl text-orange ">{name}</h2>
         <h2
@@ -24,6 +25,8 @@ const SingleProject = ({ name, year, align, image, link }) => {
         </h2>
         <a
           href={link}
+          target="_blank"
+          rel="noopener noreferrer"
           className={`text-lg flex gap-2 items-center text-cyan hover:text-orange transition-all duration-500 cursor-pointer sm:justify-self-center ${
             align === "left" ? "md:justify-self-end" : "md:justify-self-start"
           }`}
@@ -31,9 +34,20 @@ const SingleProject = ({ name, year, align, image, link }) => {
           View <BsFillArrowUpRightCircleFill />
         </a>
       </div>
-      <div className="max-h-[220px] max-w-[400px] rounded-xl overflow-hidden hover:scale-110 transform transition-all duration-500 ralative border border-white">
-        <div className="w-full h-full bg-cyan opacity-50 absolute top-0 left-0 hover:opacity-0 transition-all duration-500 md:block sm:hidden"></div>
-        <img src={image} alt="website image" className="w-full h-full" />
+
+      {/* Clickable Image */}
+      <div className="relative max-h-[220px] max-w-[400px] rounded-xl overflow-hidden border border-white transform transition-all duration-500 hover:scale-110">
+        {/* 👇 this overlay should NOT block clicks */}
+        <div className="absolute inset-0 bg-cyan opacity-50 hover:opacity-0 transition-all duration-500 pointer-events-none md:block sm:hidden" />
+        
+        {/* 👇 image wrapped in clickable link */}
+        <a href={link} target="_blank" rel="noopener noreferrer">
+          <img
+            src={image}
+            alt={`${name} screenshot`}
+            className="w-full h-full object-cover"
+          />
+        </a>
       </div>
     </motion.div>
   );
